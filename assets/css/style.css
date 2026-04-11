@@ -1,22 +1,22 @@
-/* --- Root Variables: Your Requested Palette --- */
+/* --- Root Variables: The Full Palette --- */
 :root {
-  /* Primary Accents */
+  /* Core Accents */
   --mint-green: #2b8c5d;
   --mint-light: #e9f4ef;
-  --deep-blue: #299ec2;
+  --deep-light-blue: #299ec2;
   --deep-blue-light: #eaf5f9;
   --corporate-blue: #2a569c;
   --gold-yellow: #c7cc31;
-  --gold-light: #f9faeb;
+  --gold-light: #fff9c4;
   --amber-fire: #c95e4b;
   --amber-light: #fdedeb;
 
-  /* Neutrals */
+  /* Grayscale */
   --white: #ffffff;
   --black: #000000;
   --light-grey: #f4f4f4;
-  --medium-grey: #cccccc;
   --dark-grey: #333333;
+  --border-grey: #eaeaea;
 }
 
 /* --- Global Reset --- */
@@ -37,90 +37,116 @@ body {
   margin: 0 auto;
 }
 
-/* --- Typography & Titles --- */
+/* --- Typography --- */
 .warey-title {
   font-size: 54px;
-  font-weight: 700;
-  color: var(--black);
-  margin-bottom: 2rem;
+  font-weight: bold;
+  color: var(--corporate-blue);
+  letter-spacing: -1px;
   display: block;
+  margin-bottom: 1.5rem;
 }
 
-h1, h2, h3 { font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; }
-h1 { color: var(--corporate-blue); font-size: 42px; }
-h2 { color: var(--deep-blue); font-size: 32px; border-bottom: 1px solid var(--light-grey); }
-h3 { color: var(--mint-green); font-size: 24px; }
+h1 { font-size: 42px; color: var(--corporate-blue); margin-top: 2rem; }
 
-p { margin-bottom: 1.2rem; }
+h2 {
+  font-size: 32px;
+  color: var(--deep-light-blue);
+  border-bottom: 2px solid var(--light-grey);
+  margin: 2rem 0 1rem 0;
+  padding-bottom: 5px;
+}
 
-/* --- Enhanced List Structure --- */
-ul, ol {
-  margin: 1.5rem 0;
+h3 { color: var(--mint-green); font-size: 24px; margin-top: 1.5rem; }
+
+a {
+  color: var(--mint-green);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+a:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+/* --- Navigation --- */
+nav {
+  background: var(--dark-grey);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+nav ul {
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  list-style: none;
   padding-left: 0;
+}
+
+nav ul li {
+  padding: 0;
+  border: none;
+}
+
+nav ul li::before { content: none; } /* Ensure no bullets in nav */
+
+nav ul li a {
+  color: var(--white);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+nav ul li a:hover {
+  color: var(--gold-yellow);
+  text-decoration: none;
+}
+
+/* --- List Structure (ul) --- */
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 1.5rem 0;
 }
 
 ul li {
   position: relative;
   padding: 10px 0 10px 35px;
   border-bottom: 1px solid var(--light-grey);
+  transition: background 0.2s ease;
 }
 
+/* Primary Bullet Marker */
 ul li::before {
-  content: "→";
+  content: "●";
   position: absolute;
-  left: 5px;
+  left: 10px;
   color: var(--mint-green);
-  font-weight: bold;
+  font-size: 14px;
 }
 
-/* Nested List Styling */
+ul li:hover {
+  background-color: var(--mint-light);
+}
+
+/* Nested Lists */
 ul ul { margin: 0.5rem 0; }
-ul ul li { border-bottom: none; padding-top: 5px; padding-bottom: 5px; font-size: 0.95em; }
-ul ul li::before { content: "↳"; color: var(--deep-blue); }
+ul ul li { border-bottom: none; padding-left: 30px; }
+ul ul li::before { content: "○"; color: var(--deep-light-blue); }
 
-/* --- Semantic Components --- */
-
-/* Navigation */
-nav {
-  padding: 1rem 0;
-  margin-bottom: 3rem;
-  border-bottom: 2px solid var(--black);
-}
-
-nav ul { display: flex; gap: 25px; margin: 0; }
-nav ul li { border: none; padding: 0; }
-nav ul li::before { content: ""; }
-nav ul li a {
-  text-decoration: none;
-  font-weight: 600;
-  color: var(--black);
-  text-transform: lowercase; /* Stylistic choice */
-}
-nav ul li a:hover { color: var(--amber-fire); }
-
-/* Main Content Containers */
-section {
-  padding: 20px 0;
-  margin-bottom: 2rem;
-}
-
-article {
-  background: var(--light-grey);
-  padding: 2rem;
-  border-radius: 8px;
-  border-left: 8px solid var(--corporate-blue);
-}
-
-/* Data Tables (Common in .io sites) */
+/* --- Tables --- */
 table {
   width: 100%;
   border-collapse: collapse;
   margin: 2rem 0;
-  background: var(--white);
 }
 
 th {
-  background: var(--dark-grey);
+  background: var(--corporate-blue);
   color: var(--white);
   text-align: left;
   padding: 12px;
@@ -128,44 +154,58 @@ th {
 
 td {
   padding: 12px;
-  border: 1px solid var(--light-grey);
+  border: 1px solid var(--border-grey);
 }
 
 tr:nth-child(even) { background: var(--deep-blue-light); }
 
-/* Quotes & Callouts */
+/* --- Semantic Containers & Blocks --- */
+section {
+  background: var(--white);
+  border-left: 5px solid var(--amber-fire);
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+}
+
 blockquote {
   margin: 2rem 0;
   padding: 1.5rem;
-  background: var(--gold-light);
-  border-left: 5px solid var(--gold-yellow);
+  background: var(--amber-light);
+  border-radius: 0 8px 8px 0;
+  border-left: 5px solid var(--amber-fire);
   font-style: italic;
 }
 
-/* Code Blocks */
+footer {
+  margin-top: 4rem;
+  font-size: 14px;
+  color: var(--dark-grey);
+  border-top: 1px solid var(--border-grey);
+  padding-top: 20px;
+  text-align: center;
+}
+
+/* --- Code Styling --- */
+code {
+  font-family: 'monospace';
+  background-color: var(--gold-light);
+  color: #827717; /* Darker gold for contrast */
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
 pre {
   background: var(--dark-grey);
   padding: 1.5rem;
-  border-radius: 6px;
+  border-radius: 8px;
   overflow-x: auto;
   margin: 1.5rem 0;
 }
 
-code {
-  font-family: 'monospace';
-  color: var(--amber-fire);
-}
-
-pre code { 
-  color: #8ecae6; /* Light blue for code text inside blocks */
-} 
-
-/* Footer */
-footer {
-  text-align: center;
-  margin-top: 5rem;
-  padding: 2rem 0;
-  border-top: 1px solid var(--medium-grey);
-  font-size: 14px;
-  color: var(--dark-grey);
+pre code {
+  background: transparent;
+  color: var(--deep-light-blue);
+  padding: 0;
 }
