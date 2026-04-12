@@ -72,7 +72,7 @@ a:hover {
 
 /* --- Navigation --- */
 nav {
-  background: var(--dark-grey);
+  background: var(--light-grey);
   padding: 1rem 1.5rem;
   border-radius: 8px;
   margin-bottom: 2rem;
@@ -89,6 +89,7 @@ nav ul {
 nav ul li {
   padding: 0;
   border: none;
+  color: black !important;
 }
 
 nav ul li::before { content: none; } /* Ensure no bullets in nav */
